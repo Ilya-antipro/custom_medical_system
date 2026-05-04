@@ -45,8 +45,8 @@ class Medication(MedicationBase):
 class ScheduleBase(BaseModel):
     patient_id: int
     medication_id: int
-    time_window_start: str = Field(..., regex=r"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$")
-    time_window_end: str = Field(..., regex=r"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$")
+    time_window_start: str = Field(..., pattern=r"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$")
+    time_window_end: str = Field(..., pattern=r"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$")
     frequency_days: int = Field(1, ge=1)
     active: bool = True
     criticality: float = Field(1.0, ge=0.1, le=10.0)
